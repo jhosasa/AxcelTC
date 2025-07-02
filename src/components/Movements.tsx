@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { supabase } from "../lib/supabase";
 import { Calendar, Download } from "lucide-react";
 import { jsPDF } from 'jspdf';
-import 'jspdf-autotable';
+import autoTable from 'jspdf-autotable';
 
 // Extend jsPDF type to include autoTable
 declare module 'jspdf' {
@@ -313,7 +313,7 @@ export const Movements: React.FC = () => {
     });
 
     // Crear tabla
-    doc.autoTable({
+    autoTable(doc, {
       head: [['Fecha', 'Tipo', 'Productos', 'Códigos de Barras', 'Detalles', 'Empleado']],
       body: tableData,
       startY: yPosition,
